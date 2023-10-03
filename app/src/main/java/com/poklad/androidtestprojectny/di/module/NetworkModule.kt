@@ -1,6 +1,6 @@
 package com.poklad.androidtestprojectny.di.module
 
-import com.poklad.androidtestprojectny.data.remote.NYTimesApi
+import com.poklad.androidtestprojectny.data.remote.api.NYTimesApi
 import com.poklad.androidtestprojectny.di.annotations.ApplicationScope
 import com.poklad.androidtestprojectny.utils.ApiConstants
 import dagger.Module
