@@ -1,7 +1,8 @@
-package com.poklad.androidtestprojectny
+package com.poklad.androidtestprojectny.presenatation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.poklad.androidtestprojectny.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
