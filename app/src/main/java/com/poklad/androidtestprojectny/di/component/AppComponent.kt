@@ -9,6 +9,7 @@ import com.poklad.androidtestprojectny.di.viewModel.ViewModelFactoryModule
 import com.poklad.androidtestprojectny.di.viewModel.ViewModelModule
 import com.poklad.androidtestprojectny.presenatation.MainActivity
 import com.poklad.androidtestprojectny.presenatation.ui.screens.all_categories.AllCategoriesFragment
+import com.poklad.androidtestprojectny.presenatation.ui.screens.specific_category.BooksByCategoryFragment
 import dagger.BindsInstance
 import dagger.Component
 
@@ -30,4 +31,5 @@ interface AppComponent {
 
     fun inject(activity: MainActivity)
     fun inject(fragment: AllCategoriesFragment)
+    fun inject(fragment: BooksByCategoryFragment)
 }

@@ -1,4 +1,4 @@
-package com.poklad.androidtestprojectny.data.remote.model
+package com.poklad.androidtestprojectny.data.remote.model.categories
 
 import com.google.gson.annotations.SerializedName
 

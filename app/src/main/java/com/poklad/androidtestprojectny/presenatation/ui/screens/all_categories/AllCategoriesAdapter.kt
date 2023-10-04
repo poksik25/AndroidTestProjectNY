@@ -41,6 +41,9 @@ class AllCategoriesAdapter : BaseAdapter<CategoryUiItem>() {
             binding.apply {
                 tvDisplayNameCategory.text = item.displayName
                 tvPublishedDate.text = item.newestPublishedDate
+                root.setOnClickListener {
+                    onItemClickListener?.let { it(item) }
+                }
             }
         }
     }

@@ -2,6 +2,7 @@ package com.poklad.androidtestprojectny.di.viewModel
 
 import androidx.lifecycle.ViewModel
 import com.poklad.androidtestprojectny.presenatation.ui.screens.all_categories.AllCategoriesViewModel
+import com.poklad.androidtestprojectny.presenatation.ui.screens.specific_category.BooksByCategoryViewModel
 import com.poklad.jobinterviewtestproject.di.annotations.ViewModelKey
 import dagger.Binds
 import dagger.Module
@@ -13,5 +14,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(AllCategoriesViewModel::class)
     abstract fun bindAllCategoriesViewModel(allViewModel: AllCategoriesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BooksByCategoryViewModel::class)
+    abstract fun bindBooksByCategoryViewModel(booksViewModel: BooksByCategoryViewModel): ViewModel
+
 }
 

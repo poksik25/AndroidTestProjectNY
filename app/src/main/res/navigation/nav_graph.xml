@@ -9,5 +9,14 @@
         android:id="@+id/allCategoriesFragment"
         tools:layout="@layout/fragment_all_categories"
         android:name="com.poklad.androidtestprojectny.presenatation.ui.screens.all_categories.AllCategoriesFragment"
-        android:label="AllCategoriesFragment" />
+        android:label="AllCategoriesFragment" >
+        <action
+            android:id="@+id/action_allCategoriesFragment_to_booksByCategoryFragment"
+            app:destination="@id/booksByCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/booksByCategoryFragment"
+        tools:layout="@layout/fragmemnt_books_by_category"
+        android:name="com.poklad.androidtestprojectny.presenatation.ui.screens.specific_category.BooksByCategoryFragment"
+        android:label="BooksByCategoryFragment" />
 </navigation>

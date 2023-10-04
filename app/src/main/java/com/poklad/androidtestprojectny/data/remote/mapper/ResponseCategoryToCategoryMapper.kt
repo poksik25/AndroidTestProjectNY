@@ -1,6 +1,6 @@
 package com.poklad.androidtestprojectny.data.remote.mapper
 
-import com.poklad.androidtestprojectny.data.remote.model.ResponseCategory
+import com.poklad.androidtestprojectny.data.remote.model.categories.ResponseCategory
 import com.poklad.androidtestprojectny.domain.model.Category
 import com.poklad.androidtestprojectny.utils.Mapper
 import javax.inject.Inject

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AndroidTestProjectNY</string>
+    <string name="test_desc">\"A down on his luck substitute teacher is helped by unionized dolphins and a terrifying henchperson to tackle the heap of troubles he inherits along with his uncle’s supervillain business.</string>
+    <string name="title">FOURTH WING</string>
+    <string name="author">Rebecca Yarros</string>
+    <string name="publisher">Scribner</string>
+    <string name="rank">"Rank: "</string>
+    <string name="digit">15</string>
 </resources>

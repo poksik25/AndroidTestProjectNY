@@ -1,6 +1,5 @@
 package com.poklad.androidtestprojectny.presenatation.ui.screens.all_categories
 
-import com.poklad.androidtestprojectny.domain.model.Category
 import com.poklad.androidtestprojectny.domain.usecases.GetAllCategoriesUseCase
 import com.poklad.androidtestprojectny.presenatation.mapper.CategoryToCategoryUiItemMapper
 import com.poklad.androidtestprojectny.presenatation.model.CategoryUiItem
@@ -23,7 +22,7 @@ class AllCategoriesViewModel @Inject constructor(
     BaseViewModel(coroutineDispatchersProvider) {
     override val coroutineExceptionHandler: CoroutineExceptionHandler
         get() = CoroutineExceptionHandler { _, throwable ->
-            log(throwable.message.toString() + "  1")
+            log(throwable.message.toString())
         }
     private val _categoriesList = MutableStateFlow<List<CategoryUiItem>>(emptyList())
     val categoryList = _categoriesList.asStateFlow()
@@ -46,8 +45,7 @@ class AllCategoriesViewModel @Inject constructor(
         }.onSuccess { list ->
             _categoriesList.value = list
         }.onFailure { exception: Throwable ->
-//            emitError(exception)
-            log(exception.message.toString())
+            emitError(exception)
         }
     }
 }

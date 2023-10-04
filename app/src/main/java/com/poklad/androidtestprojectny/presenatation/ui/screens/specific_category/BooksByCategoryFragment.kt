@@ -1,10 +1,9 @@
-package com.poklad.androidtestprojectny.presenatation.ui.screens.all_categories
+package com.poklad.androidtestprojectny.presenatation.ui.screens.specific_category
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -12,43 +11,49 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.poklad.androidtestprojectny.NYApp
-import com.poklad.androidtestprojectny.R
-import com.poklad.androidtestprojectny.databinding.FragmentAllCategoriesBinding
+import com.poklad.androidtestprojectny.databinding.FragmemntBooksByCategoryBinding
+import com.poklad.androidtestprojectny.di.component.DaggerAppComponent
+import com.poklad.androidtestprojectny.presenatation.model.BookUiItem
 import com.poklad.androidtestprojectny.presenatation.model.CategoryUiItem
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseFragment
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseViewModel
-import com.poklad.androidtestprojectny.presenatation.ui.screens.specific_category.BooksByCategoryFragment
+import com.poklad.androidtestprojectny.presenatation.ui.screens.all_categories.AllCategoriesAdapter
 import com.poklad.androidtestprojectny.utils.extensions.invisible
-import com.poklad.androidtestprojectny.utils.extensions.log
 import com.poklad.androidtestprojectny.utils.extensions.toast
 import com.poklad.androidtestprojectny.utils.extensions.visible
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class AllCategoriesFragment : BaseFragment<FragmentAllCategoriesBinding, BaseViewModel>() {
+class BooksByCategoryFragment : BaseFragment<FragmemntBooksByCategoryBinding, BaseViewModel>() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    override val viewModel: AllCategoriesViewModel by viewModels {
+    override val viewModel: BooksByCategoryViewModel by viewModels {
         viewModelFactory
     }
 
-    override fun inflateViewBinding(inflater: LayoutInflater): FragmentAllCategoriesBinding =
-        FragmentAllCategoriesBinding.inflate(inflater)
+    override fun inflateViewBinding(inflater: LayoutInflater): FragmemntBooksByCategoryBinding =
+        FragmemntBooksByCategoryBinding.inflate(inflater)
 
-    private val allCategoriesAdapter: AllCategoriesAdapter by lazy {
-        AllCategoriesAdapter()
+    private val booksAdapter: BooksByCategoryAdapter by lazy {
+        BooksByCategoryAdapter()
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        NYApp.daggerAppComponent.inject(this@AllCategoriesFragment)
+        NYApp.daggerAppComponent.inject(this@BooksByCategoryFragment)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getCategoryName()
         setUpObserver()
         initRecyclerView()
+    }
+
+    private fun getCategoryName() {
+        val categoryName = requireArguments().getString(CATEGORY_ARG)
+        categoryName?.let { viewModel.loadBooks(it) }
     }
 
     private fun setUpObserver() {
@@ -57,20 +62,20 @@ class AllCategoriesFragment : BaseFragment<FragmentAllCategoriesBinding, BaseVie
                 viewModel.loadingFlow.collect { showLoader ->
                     if (showLoader) {
                         binding.apply {
-                            pbCategories.visible()
-                            rvCategoriesList.invisible()
+                            pbBooks.visible()
+                            rvBooksList.invisible()
                         }
                     } else {
                         binding.apply {
-                            pbCategories.invisible()
-                            rvCategoriesList.visible()
+                            pbBooks.invisible()
+                            rvBooksList.visible()
                         }
                     }
                 }
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.categoryList.collect { list ->
+            viewModel.bookList.collect { list ->
                 renderList(list)
             }
         }
@@ -87,21 +92,21 @@ class AllCategoriesFragment : BaseFragment<FragmentAllCategoriesBinding, BaseVie
         }
     }
 
-    private fun renderList(categoryList: List<CategoryUiItem>) {
-        allCategoriesAdapter.list = categoryList
+    private fun renderList(categoryList: List<BookUiItem>) {
+        booksAdapter.list = categoryList
     }
 
     private fun initRecyclerView() {
-        binding.rvCategoriesList.apply {
-            adapter = allCategoriesAdapter
+        binding.rvBooksList.apply {
+            adapter = booksAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
-        allCategoriesAdapter.setOnclickListener { category ->
-            val categoryName = category.listNameEncoded
-            navigateToFragment(
-                R.id.action_allCategoriesFragment_to_booksByCategoryFragment,
-                bundleOf(BooksByCategoryFragment.CATEGORY_ARG to categoryName)
-            )
+        booksAdapter.setOnclickListener { category ->
+            requireContext().toast(category.amazonProductUrl)
         }
+    }
+
+    companion object {
+        const val CATEGORY_ARG = "CATEGORY_ARG"
     }
 }
