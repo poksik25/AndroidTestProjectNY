@@ -10,9 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.poklad.androidtestprojectny.NYApp
 import com.poklad.androidtestprojectny.databinding.FragmentAllCategoriesBinding
 import com.poklad.androidtestprojectny.domain.model.Category
+import com.poklad.androidtestprojectny.presenatation.model.CategoryUiItem
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseFragment
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseViewModel
 import com.poklad.androidtestprojectny.utils.extensions.invisible
@@ -86,14 +88,14 @@ class AllCategoriesFragment : BaseFragment<FragmentAllCategoriesBinding, BaseVie
         }
     }
 
-    private fun renderList(giphyList: List<Category>) {
-        allCategoriesAdapter.list = giphyList
+    private fun renderList(categoryList: List<CategoryUiItem>) {
+        allCategoriesAdapter.list = categoryList
     }
 
     private fun initRecyclerView() {
         binding.rvCategoriesList.apply {
             adapter = allCategoriesAdapter
-            layoutManager = GridLayoutManager(requireContext(), 2)
+            layoutManager = LinearLayoutManager(requireContext())
         }
         allCategoriesAdapter.setOnclickListener { category ->
             requireContext().toast(category.updated)

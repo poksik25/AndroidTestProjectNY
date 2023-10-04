@@ -7,20 +7,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.poklad.androidtestprojectny.databinding.ItemCategoryBinding
 import com.poklad.androidtestprojectny.domain.model.Category
+import com.poklad.androidtestprojectny.presenatation.model.CategoryUiItem
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseAdapter
 
-class AllCategoriesAdapter : BaseAdapter<Category>() {
-    private val differCallback = object : DiffUtil.ItemCallback<Category>() {
+class AllCategoriesAdapter : BaseAdapter<CategoryUiItem>() {
+    private val differCallback = object : DiffUtil.ItemCallback<CategoryUiItem>() {
         override fun areItemsTheSame(
-            oldItem: Category,
-            newItem: Category
+            oldItem: CategoryUiItem,
+            newItem: CategoryUiItem
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: Category,
-            newItem: Category
+            oldItem: CategoryUiItem,
+            newItem: CategoryUiItem
         ): Boolean {
             return oldItem == newItem
         }
@@ -35,8 +36,8 @@ class AllCategoriesAdapter : BaseAdapter<Category>() {
     inner class CategoriesViewHolder(private val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(
             binding.root
-        ), Binder<Category> {
-        override fun bind(item: Category) {
+        ), Binder<CategoryUiItem> {
+        override fun bind(item: CategoryUiItem) {
             binding.apply {
                 tvDisplayNameCategory.text = item.displayName
                 tvPublishedDate.text = item.newestPublishedDate
