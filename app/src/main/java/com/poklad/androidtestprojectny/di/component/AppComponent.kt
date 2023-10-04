@@ -4,9 +4,11 @@ import android.content.Context
 import com.poklad.androidtestprojectny.di.annotations.ApplicationScope
 import com.poklad.androidtestprojectny.di.module.DispatcherModule
 import com.poklad.androidtestprojectny.di.module.NetworkModule
+import com.poklad.androidtestprojectny.di.module.RepositoryModule
 import com.poklad.androidtestprojectny.di.viewModel.ViewModelFactoryModule
 import com.poklad.androidtestprojectny.di.viewModel.ViewModelModule
 import com.poklad.androidtestprojectny.presenatation.MainActivity
+import com.poklad.androidtestprojectny.presenatation.ui.screens.all_categories.AllCategoriesFragment
 import dagger.BindsInstance
 import dagger.Component
 
@@ -16,7 +18,8 @@ import dagger.Component
         DispatcherModule::class,
         NetworkModule::class,
         ViewModelFactoryModule::class,
-        ViewModelModule::class
+        ViewModelModule::class,
+        RepositoryModule::class
     ]
 )
 interface AppComponent {
@@ -26,4 +29,5 @@ interface AppComponent {
     }
 
     fun inject(activity: MainActivity)
+    fun inject(fragment: AllCategoriesFragment)
 }

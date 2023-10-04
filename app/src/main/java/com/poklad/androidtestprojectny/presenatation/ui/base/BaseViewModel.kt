@@ -6,7 +6,9 @@ import com.poklad.androidtestprojectny.utils.CoroutineDispatchersProvider
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
@@ -18,18 +20,20 @@ abstract class BaseViewModel(
     private val _loadingFlow = MutableStateFlow(false)
     val loadingFlow = _loadingFlow.asStateFlow()
 
-    protected fun showLoader() {
+    private val _errorFlow = MutableSharedFlow<Throwable?>()
+    val errorFlow = _errorFlow.asSharedFlow()
+    protected fun emitError(throwable: Throwable?) {
+        viewModelScope.launch {
+            _errorFlow.emit(throwable)
+        }
+    }
+
+    private fun showLoader() {
         _loadingFlow.value = true
     }
 
-    protected fun hideLoader() {
+    private fun hideLoader() {
         _loadingFlow.value = false
-    }
-
-    protected fun launchCoroutineIO(block: suspend CoroutineScope.() -> Unit): Job {
-        return viewModelScope.launch(dispatchers.getIO() + coroutineExceptionHandler) {
-            block()
-        }
     }
 
     protected fun launchMain(
