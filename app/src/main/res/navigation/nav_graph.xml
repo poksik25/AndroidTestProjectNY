@@ -7,16 +7,33 @@
 
     <fragment
         android:id="@+id/allCategoriesFragment"
-        tools:layout="@layout/fragment_all_categories"
         android:name="com.poklad.androidtestprojectny.presenatation.ui.screens.all_categories.AllCategoriesFragment"
-        android:label="AllCategoriesFragment" >
+        android:label="AllCategoriesFragment"
+        tools:layout="@layout/fragment_all_categories">
         <action
             android:id="@+id/action_allCategoriesFragment_to_booksByCategoryFragment"
-            app:destination="@id/booksByCategoryFragment" />
+            app:destination="@id/booksByCategoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/booksByCategoryFragment"
-        tools:layout="@layout/fragmemnt_books_by_category"
-        android:name="com.poklad.androidtestprojectny.presenatation.ui.screens.specific_category.BooksByCategoryFragment"
-        android:label="BooksByCategoryFragment" />
+        android:name="com.poklad.androidtestprojectny.presenatation.ui.screens.books_list.BooksByCategoryFragment"
+        android:label="BooksByCategoryFragment"
+        tools:layout="@layout/fragmemnt_books_by_category">
+        <action
+            android:id="@+id/action_booksByCategoryFragment_to_amazonBuyFragment"
+            app:destination="@id/amazonBuyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/amazonBuyFragment"
+        android:name="com.poklad.androidtestprojectny.presenatation.ui.screens.amazon_market.AmazonBuyFragment"
+        android:label="AmazonBuyFragment"
+        tools:layout="@layout/fragment_amazon" />
 </navigation>

@@ -1,25 +1,26 @@
-package com.poklad.androidtestprojectny.presenatation.ui.screens.specific_category
+package com.poklad.androidtestprojectny.presenatation.ui.screens.books_list
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.poklad.androidtestprojectny.NYApp
+import com.poklad.androidtestprojectny.R
 import com.poklad.androidtestprojectny.databinding.FragmemntBooksByCategoryBinding
-import com.poklad.androidtestprojectny.di.component.DaggerAppComponent
 import com.poklad.androidtestprojectny.presenatation.model.BookUiItem
-import com.poklad.androidtestprojectny.presenatation.model.CategoryUiItem
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseFragment
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseViewModel
-import com.poklad.androidtestprojectny.presenatation.ui.screens.all_categories.AllCategoriesAdapter
+import com.poklad.androidtestprojectny.presenatation.ui.screens.amazon_market.AmazonBuyFragment
 import com.poklad.androidtestprojectny.utils.extensions.invisible
-import com.poklad.androidtestprojectny.utils.extensions.toast
+import com.poklad.androidtestprojectny.utils.extensions.showSnackbar
 import com.poklad.androidtestprojectny.utils.extensions.visible
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -49,6 +50,17 @@ class BooksByCategoryFragment : BaseFragment<FragmemntBooksByCategoryBinding, Ba
         getCategoryName()
         setUpObserver()
         initRecyclerView()
+        goToAmazon()
+    }
+
+    private fun goToAmazon() {
+        booksAdapter.setOnclickListener {
+            val amazonUrl = it.amazonProductUrl
+            navigateToFragment(
+                R.id.action_booksByCategoryFragment_to_amazonBuyFragment,
+                bundleOf(AmazonBuyFragment.LINK_AMAZON_ARG to amazonUrl)
+            )
+        }
     }
 
     private fun getCategoryName() {
@@ -86,7 +98,10 @@ class BooksByCategoryFragment : BaseFragment<FragmemntBooksByCategoryBinding, Ba
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.errorFlow.collect {
-                    requireContext().toast(it?.message.toString())
+                    binding.root.showSnackbar(
+                        it?.message.toString(),
+                        Snackbar.LENGTH_LONG
+                    )
                 }
             }
         }
@@ -100,9 +115,6 @@ class BooksByCategoryFragment : BaseFragment<FragmemntBooksByCategoryBinding, Ba
         binding.rvBooksList.apply {
             adapter = booksAdapter
             layoutManager = LinearLayoutManager(requireContext())
-        }
-        booksAdapter.setOnclickListener { category ->
-            requireContext().toast(category.amazonProductUrl)
         }
     }
 

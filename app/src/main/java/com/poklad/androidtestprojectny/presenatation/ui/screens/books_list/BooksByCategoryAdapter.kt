@@ -1,4 +1,4 @@
-package com.poklad.androidtestprojectny.presenatation.ui.screens.specific_category
+package com.poklad.androidtestprojectny.presenatation.ui.screens.books_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -34,22 +34,22 @@ class BooksByCategoryAdapter : BaseAdapter<BookUiItem>() {
         return BooksHolder(binding)
     }
 
-    companion object {
-        class BooksHolder(private val binding: ItemBookBinding) :
-            RecyclerView.ViewHolder(
-                binding.root
-            ), Binder<BookUiItem> {
-            override fun bind(item: BookUiItem) {
-                binding.apply {
-                    tvAuthor.text = item.author
-                    tvDescription.text = item.description
-                    tvPublisher.text = item.publisher
-                    tvTitle.text = item.publisher
-                    tvRankDigit.text = item.rank.toString()
-                    Glide.with(ivBookImage)
-                        .load(item.bookImage)
-                        .centerCrop()
-                        .into(ivBookImage)
+    inner class BooksHolder(private val binding: ItemBookBinding) :
+        RecyclerView.ViewHolder(
+            binding.root
+        ), Binder<BookUiItem> {
+        override fun bind(item: BookUiItem) {
+            binding.apply {
+                tvAuthor.text = item.author
+                tvDescription.text = item.description
+                tvPublisher.text = item.publisher
+                tvTitle.text = item.title
+                tvRankDigit.text = item.rank.toString()
+                Glide.with(ivBookImage)
+                    .load(item.bookImage)
+                    .into(ivBookImage)
+                fbBuy.setOnClickListener {
+                    onItemClickListener?.let { it(item) }
                 }
             }
         }

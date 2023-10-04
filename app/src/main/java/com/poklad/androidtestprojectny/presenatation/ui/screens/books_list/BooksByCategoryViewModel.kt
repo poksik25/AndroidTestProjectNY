@@ -1,4 +1,4 @@
-package com.poklad.androidtestprojectny.presenatation.ui.screens.specific_category
+package com.poklad.androidtestprojectny.presenatation.ui.screens.books_list
 
 import com.poklad.androidtestprojectny.domain.usecases.GetBooksByCategoryUseCase
 import com.poklad.androidtestprojectny.presenatation.mapper.BookToBookItemUiMapper

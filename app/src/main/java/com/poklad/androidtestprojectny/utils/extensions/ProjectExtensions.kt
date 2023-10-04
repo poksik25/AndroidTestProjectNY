@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 
 fun Any.tag(): String {
     return this::class.simpleName!!
@@ -15,6 +16,10 @@ fun Any.log(msg: String) {
 
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+
+fun View.showSnackbar(message: String, length: Int = Snackbar.LENGTH_SHORT) {
+    Snackbar.make(this, message, length).show()
 }
 
 fun View.visible() {

@@ -9,7 +9,7 @@ import com.poklad.androidtestprojectny.di.viewModel.ViewModelFactoryModule
 import com.poklad.androidtestprojectny.di.viewModel.ViewModelModule
 import com.poklad.androidtestprojectny.presenatation.MainActivity
 import com.poklad.androidtestprojectny.presenatation.ui.screens.all_categories.AllCategoriesFragment
-import com.poklad.androidtestprojectny.presenatation.ui.screens.specific_category.BooksByCategoryFragment
+import com.poklad.androidtestprojectny.presenatation.ui.screens.books_list.BooksByCategoryFragment
 import dagger.BindsInstance
 import dagger.Component
 
