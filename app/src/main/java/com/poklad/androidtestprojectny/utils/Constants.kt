@@ -7,3 +7,8 @@ object ApiConstants {
     private const val GET_BOOKS_BY_SPECIFIC_CATEGORY = "lists/current"
     const val GET_BOOKS_BY_CATEGORY = "$GET_BOOKS_BY_SPECIFIC_CATEGORY/{category}.json"
 }
+
+object DatabaseConstants {
+    const val DATABASE_VERSION = 1
+    const val GET_CATEGORIES_FROM_DB = "SELECT * FROM category"
+}
