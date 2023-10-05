@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.poklad.androidtestprojectny.databinding.ItemBookBinding
 import com.poklad.androidtestprojectny.presenatation.model.BookUiItem
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseAdapter
+import com.poklad.androidtestprojectny.utils.extensions.loadImage
 
 class BooksByCategoryAdapter : BaseAdapter<BookUiItem>() {
 
@@ -45,9 +46,7 @@ class BooksByCategoryAdapter : BaseAdapter<BookUiItem>() {
                 tvPublisher.text = item.publisher
                 tvTitle.text = item.title
                 tvRankDigit.text = item.rank.toString()
-                Glide.with(ivBookImage)
-                    .load(item.bookImage)
-                    .into(ivBookImage)
+                ivBookImage.loadImage(item.bookImage)
                 fbBuy.setOnClickListener {
                     onItemClickListener?.let { it(item) }
                 }

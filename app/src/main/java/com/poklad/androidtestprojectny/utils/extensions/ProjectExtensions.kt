@@ -3,7 +3,9 @@ package com.poklad.androidtestprojectny.utils.extensions
 import android.content.Context
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 
 fun Any.tag(): String {
@@ -32,4 +34,10 @@ fun View.invisible() {
 
 fun View.gone() {
     visibility = View.GONE
+}
+
+fun ImageView.loadImage(url: Any) {
+    Glide.with(this)
+        .load(url)
+        .into(this)
 }

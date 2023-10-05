@@ -9,12 +9,14 @@ import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.poklad.androidtestprojectny.utils.delegate.viewBinding
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
 
     protected val binding: VB by lazy {
         inflateViewBinding(layoutInflater)
     }
+
 
     protected abstract val viewModel: VM
 

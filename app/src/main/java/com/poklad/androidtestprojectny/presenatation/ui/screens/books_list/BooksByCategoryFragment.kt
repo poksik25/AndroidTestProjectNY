@@ -19,6 +19,7 @@ import com.poklad.androidtestprojectny.presenatation.model.BookUiItem
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseFragment
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseViewModel
 import com.poklad.androidtestprojectny.presenatation.ui.screens.amazon_market.AmazonBuyFragment
+import com.poklad.androidtestprojectny.utils.delegate.viewBinding
 import com.poklad.androidtestprojectny.utils.extensions.invisible
 import com.poklad.androidtestprojectny.utils.extensions.showSnackbar
 import com.poklad.androidtestprojectny.utils.extensions.visible
@@ -47,23 +48,23 @@ class BooksByCategoryFragment : BaseFragment<FragmemntBooksByCategoryBinding, Ba
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getCategoryName()
+        loadBooks()
         setUpObserver()
         initRecyclerView()
-        goToAmazon()
-    }
-
-    private fun goToAmazon() {
         booksAdapter.setOnclickListener {
-            val amazonUrl = it.amazonProductUrl
-            navigateToFragment(
-                R.id.action_booksByCategoryFragment_to_amazonBuyFragment,
-                bundleOf(AmazonBuyFragment.LINK_AMAZON_ARG to amazonUrl)
-            )
+            buyBookInAmazon(it)
         }
     }
 
-    private fun getCategoryName() {
+    private fun buyBookInAmazon(bookUiItem: BookUiItem) {
+        val amazonUrl = bookUiItem.amazonProductUrl
+        navigateToFragment(
+            R.id.action_booksByCategoryFragment_to_amazonBuyFragment,
+            bundleOf(AmazonBuyFragment.LINK_AMAZON_ARG to amazonUrl)
+        )
+    }
+
+    private fun loadBooks() {
         val categoryName = requireArguments().getString(CATEGORY_ARG)
         categoryName?.let { viewModel.loadBooks(it) }
     }

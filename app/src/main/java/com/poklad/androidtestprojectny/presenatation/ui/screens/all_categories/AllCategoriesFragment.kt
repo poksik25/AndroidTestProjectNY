@@ -18,6 +18,7 @@ import com.poklad.androidtestprojectny.presenatation.model.CategoryUiItem
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseFragment
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseViewModel
 import com.poklad.androidtestprojectny.presenatation.ui.screens.books_list.BooksByCategoryFragment
+import com.poklad.androidtestprojectny.utils.delegate.viewBinding
 import com.poklad.androidtestprojectny.utils.extensions.invisible
 import com.poklad.androidtestprojectny.utils.extensions.showSnackbar
 import com.poklad.androidtestprojectny.utils.extensions.visible
@@ -80,7 +81,7 @@ class AllCategoriesFragment : BaseFragment<FragmentAllCategoriesBinding, BaseVie
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.errorFlow.collect {
-                   binding.root.showSnackbar(it?.message.toString())
+                    binding.root.showSnackbar(it?.message.toString())
                 }
             }
         }

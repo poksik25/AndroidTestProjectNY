@@ -20,10 +20,5 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(BooksByCategoryViewModel::class)
     abstract fun bindBooksByCategoryViewModel(booksViewModel: BooksByCategoryViewModel): ViewModel
-    @Binds
-    @IntoMap
-    @ViewModelKey(AmazonBuyViewModel::class)
-    abstract fun bindAmazonViewModel(amazonViewModel: AmazonBuyViewModel): ViewModel
-
 }
 
