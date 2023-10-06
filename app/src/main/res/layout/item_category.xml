@@ -4,33 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    android:background="@drawable/border"
-    app:cardCornerRadius="8dp">
+    android:layout_margin="@dimen/projectMargin"
+    app:cardCornerRadius="@dimen/corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/projectMargin"
+        tools:background="@color/yellow">
 
         <TextView
             android:id="@+id/tv_display_name_category"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/projectMargin"
             android:fontFamily="@font/nunito_sans_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Combined Print and E-Book Fiction" />
 
         <TextView
+            android:id="@+id/published"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/projectMargin"
+            android:fontFamily="@font/nunito_sans_light"
+            android:text="@string/published_date"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_display_name_category" />
+
+        <TextView
             android:id="@+id/tv_published_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/chomsky"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="WEEKLY" />
+            android:padding="@dimen/itemMargin"
+            android:text="@string/date"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@id/published"
+            app:layout_constraintStart_toEndOf="@id/published" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -2,6 +2,7 @@ package com.poklad.androidtestprojectny.di.component
 
 import android.content.Context
 import com.poklad.androidtestprojectny.di.annotations.ApplicationScope
+import com.poklad.androidtestprojectny.di.module.DatabaseModule
 import com.poklad.androidtestprojectny.di.module.DispatcherModule
 import com.poklad.androidtestprojectny.di.module.NetworkModule
 import com.poklad.androidtestprojectny.di.module.RepositoryModule
@@ -20,7 +21,8 @@ import dagger.Component
         NetworkModule::class,
         ViewModelFactoryModule::class,
         ViewModelModule::class,
-        RepositoryModule::class
+        RepositoryModule::class,
+        DatabaseModule::class
     ]
 )
 interface AppComponent {

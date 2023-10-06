@@ -1,12 +1,12 @@
 package com.poklad.androidtestprojectny.presenatation.mapper
 
-import com.poklad.androidtestprojectny.domain.model.Category
+import com.poklad.androidtestprojectny.domain.model.CategoryItem
 import com.poklad.androidtestprojectny.presenatation.model.CategoryUiItem
 import com.poklad.androidtestprojectny.utils.Mapper
 import javax.inject.Inject
 
-class CategoryToCategoryUiItemMapper @Inject constructor() : Mapper<Category, CategoryUiItem> {
-    override fun map(data: Category): CategoryUiItem {
+class CategoryToCategoryUiItemMapper @Inject constructor() : Mapper<CategoryItem, CategoryUiItem> {
+    override fun map(data: CategoryItem): CategoryUiItem {
         return CategoryUiItem(
             listName = data.listName,
             displayName = data.displayName,

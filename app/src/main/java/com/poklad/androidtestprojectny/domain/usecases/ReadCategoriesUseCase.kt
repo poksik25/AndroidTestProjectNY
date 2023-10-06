@@ -4,10 +4,11 @@ import com.poklad.androidtestprojectny.domain.model.CategoryItem
 import com.poklad.androidtestprojectny.domain.repositories.CategoryRepository
 import javax.inject.Inject
 
-class GetAllCategoriesUseCase @Inject constructor(
+class ReadCategoriesUseCase @Inject constructor(
     private val repository: CategoryRepository
 ) : UseCaseSuspend<Unit, List<CategoryItem>> {
+
     override suspend fun execute(params: Unit): List<CategoryItem> {
-        return repository.getCategories()
+        TODO()
     }
 }

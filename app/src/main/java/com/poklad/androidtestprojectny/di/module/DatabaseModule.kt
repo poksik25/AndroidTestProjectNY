@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.poklad.androidtestprojectny.data.local.database.NYBooksDatabase
 import com.poklad.androidtestprojectny.di.annotations.ApplicationScope
+import com.poklad.androidtestprojectny.utils.DatabaseConstants
 import dagger.Module
 import dagger.Provides
 
@@ -15,7 +16,11 @@ class DatabaseModule {
         return Room.databaseBuilder(
             context = context,
             NYBooksDatabase::class.java,
-            "ny_books.db"
+            DatabaseConstants.DATABASE_NAME
         ).build()
     }
+
+    @ApplicationScope
+    @Provides
+    fun providesCategoryDao(database: NYBooksDatabase) = database.getCategoryDao()
 }

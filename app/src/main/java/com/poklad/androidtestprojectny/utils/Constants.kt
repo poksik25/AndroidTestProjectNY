@@ -11,4 +11,5 @@ object ApiConstants {
 object DatabaseConstants {
     const val DATABASE_VERSION = 1
     const val GET_CATEGORIES_FROM_DB = "SELECT * FROM category"
+    const val DATABASE_NAME = "ny_books.db"
 }

@@ -6,4 +6,7 @@
     <string name="publisher">Scribner</string>
     <string name="rank">"Rank: "</string>
     <string name="digit">15</string>
+    <string name="published_date">Published date - </string>
+    <string name="date"> 2023.09.03</string>
+
 </resources>

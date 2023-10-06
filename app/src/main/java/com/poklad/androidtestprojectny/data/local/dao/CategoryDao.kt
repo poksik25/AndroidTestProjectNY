@@ -10,8 +10,8 @@ import com.poklad.androidtestprojectny.utils.DatabaseConstants
 @Dao
 interface CategoryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCategories(): List<CategoryEntity>
+    suspend fun insertCategories(categoriesList: List<CategoryEntity>)
 
     @Query(DatabaseConstants.GET_CATEGORIES_FROM_DB)
-    suspend fun getCategories(): List<CategoryEntity>
+    suspend fun readAllCategories(): List<CategoryEntity>
 }

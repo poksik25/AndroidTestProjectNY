@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FC533C</color>
+    <color name="blue">#6C85D7</color>
+    <color name="green">#0A8159</color>
+    <color name="yellow">#FFA215</color>
+
+    <integer-array name="color_array">
+        <item>@color/red</item>
+        <item>@color/blue</item>
+        <item>@color/green</item>
+        <item>@color/yellow</item>
+    </integer-array>
 </resources>
