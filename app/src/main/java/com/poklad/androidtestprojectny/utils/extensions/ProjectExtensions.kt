@@ -16,6 +16,10 @@ fun Any.log(msg: String) {
     Log.d("TAG: ${tag()}", msg)
 }
 
+fun Any.logError(msg: String) {
+    Log.e("TAG: ${tag()}", msg)
+}
+
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }

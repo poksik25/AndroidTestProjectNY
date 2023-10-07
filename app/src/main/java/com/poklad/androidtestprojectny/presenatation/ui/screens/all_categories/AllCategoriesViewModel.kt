@@ -1,8 +1,6 @@
 package com.poklad.androidtestprojectny.presenatation.ui.screens.all_categories
 
 import com.poklad.androidtestprojectny.domain.usecases.GetAllCategoriesUseCase
-import com.poklad.androidtestprojectny.domain.usecases.InsertCategoriesUseCase
-import com.poklad.androidtestprojectny.domain.usecases.ReadCategoriesUseCase
 import com.poklad.androidtestprojectny.presenatation.mapper.CategoryToCategoryUiItemMapper
 import com.poklad.androidtestprojectny.presenatation.model.CategoryUiItem
 import com.poklad.androidtestprojectny.presenatation.ui.base.BaseViewModel
@@ -20,8 +18,6 @@ class AllCategoriesViewModel @Inject constructor(
     coroutineDispatchersProvider: CoroutineDispatchersProvider,
     private val getAllCategoriesUseCase: GetAllCategoriesUseCase,
     private val mapper: CategoryToCategoryUiItemMapper,
-    private val readCategoriesUseCase: ReadCategoriesUseCase,
-    private val insertCategoriesUseCase: InsertCategoriesUseCase
 ) :
     BaseViewModel(coroutineDispatchersProvider) {
     override val coroutineExceptionHandler: CoroutineExceptionHandler
@@ -40,6 +36,7 @@ class AllCategoriesViewModel @Inject constructor(
             fetchCategories(this)
         }
     }
+
     private suspend fun fetchCategories(scope: CoroutineScope) {
         scope.coRunCatching {
             withContext(dispatchers.getIO()) {

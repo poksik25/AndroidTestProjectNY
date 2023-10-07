@@ -1,10 +1,10 @@
 package com.poklad.androidtestprojectny.domain.repositories
 
-import com.poklad.androidtestprojectny.domain.model.CategoryItem
+import com.poklad.androidtestprojectny.domain.model.Category
 
 interface CategoryRepository {
-    suspend fun getCategories(): List<CategoryItem>
+    suspend fun getCategories(): List<Category>
 
-    //   suspend fun readCategories(): List<CategoryItem>
-    suspend fun insertCategories(categoriesList: List<CategoryItem>)
+   /* suspend fun readCategories(): List<CategoryEntity>
+    suspend fun insertCategories(categoriesList: List<CategoryEntity>)*/
 }

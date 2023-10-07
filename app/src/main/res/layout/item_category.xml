@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/projectMargin"
-            android:fontFamily="@font/nunito_sans_semibold"
+            android:fontFamily="@font/nunito_sans_bold"
             android:textColor="@color/white"
             android:textSize="@dimen/title_size"
             app:layout_constraintEnd_toEndOf="parent"

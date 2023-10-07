@@ -1,6 +1,6 @@
 package com.poklad.androidtestprojectny.domain.model
 
-data class CategoryItem(
+data class Category(
     val listName: String,
     val displayName: String,
     val listNameEncoded: String,

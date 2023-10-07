@@ -7,8 +7,7 @@ import com.poklad.androidtestprojectny.data.local.model.CategoryEntity
 import com.poklad.androidtestprojectny.utils.DatabaseConstants
 
 @Database(
-    entities = [
-        CategoryEntity::class],
+    entities = [CategoryEntity::class],
     version = DatabaseConstants.DATABASE_VERSION,
     exportSchema = true
 )
